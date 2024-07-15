@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/my-utils:$HOME/bin:/usr/local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -107,28 +107,69 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Zsh customization
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Enable Syntax highlighting 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Enabling Auto Suggestions in zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Color in man page
-export PAGER=most
-
-# Adding folder of my program files to path
-PATH=$PATH:/Users/riya/.rc
+export PAGER='most'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
- [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-alias run=autorun.sh
-export BAT_THEME="Monokai Extended Bright"
-
-alias fm=functionToConst.sh
-alias vimsh=vimsh.sh
-alias cr=create_repository.sh
-alias code="cd ~/workspace/js/codespace"
-alias p="cd ~/workspace/js/projects"
-alias sed=gsed
-alias sprint=~/workspace/js/personal/sprint/
+alias vimsh="vimsh.sh"
+alias run="autoRun.sh"
 alias vrc="vim ~/.vimrc"
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# Setting the theme of BAT
+export BAT_THEME="Dracula"
+
+# bun completions
+[ -s "/Users/gourabporey/.bun/_bun" ] && source "/Users/gourabporey/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+ export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
+
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home"
+export JAVA_HOME=`/usr/libexec/java_home -v 11`
+
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+# Docker Aliases
+# Docker aliases
+alias dpsa='docker ps -a'
+alias dim='docker images'
+alias dbuild='docker build'
+alias drun='docker run'
+alias dstop='docker stop'
+alias drm='docker rm'
+alias dri='docker rmi'
+alias dpull='docker pull'
+alias dexec='docker exec'
+alias dnetls='docker network ls'
+alias dcup='docker-compose up'
+alias dcdown='docker-compose down'
+alias dstat='docker stats'
+alias dlogs='docker logs'
+
+# Kotlin alias
+alias kt="kotlinc"
+
+alias nx='nocorrect nx'
+export PATH="/usr/local/opt/dotnet@6/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/riyaghosal/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+### alias rider="/Applications/Rider.app/Contents/MacOS/rider"
+alias rider="/Applications/Rider.app/Contents/MacOS/rider"
