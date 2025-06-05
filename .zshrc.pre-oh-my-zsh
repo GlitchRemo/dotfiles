@@ -6,16 +6,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="$HOME/my-utils:$HOME/bin:/opt/homebrew/bin:$PATH"
 
-# Path to your Oh My Zsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
+# load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,11 +78,11 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH="/opt/homebrew/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -96,58 +95,85 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+# export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Enable Syntax highlighting 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-plugins=(git zsh-autosuggestions)
-plugins=(git zsh-autosuggestions zsh-history-substring-search)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
+# Enabling Auto Suggestions in zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-function reset_autosuggest_color() {
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=default'
-    source ~/dotfiles/zsh-autosuggestions/zsh-autosuggestions.zsh
-}
-
-bindkey '^[[C' reset_autosuggest_color  # Right arrow key
-source ~/dotfiles/zsh-autosuggestions/zsh-autosuggestions.zsh
-alias gt='git stash'
-alias gtp='git stash pop'
-alias k=kubectl
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+export PAGER='most'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
-export PATH="$PATH:/Users/riyaghosal/.dotnet/tools"
+alias vimsh="vimsh.sh"
+alias run="autoRun.sh"
+alias vrc="vim ~/.vimrc"
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/riyaghosal/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+# Setting the theme of BAT
+export BAT_THEME="Dracula"
+
+
+export PATH="/opt/homebrew/opt/openjdk@8/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@8/include"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+ export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
+
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# AsyncAPI CLI Autocomplete
 
-ASYNCAPI_AC_ZSH_SETUP_PATH=/Users/riyaghosal/Library/Caches/@asyncapi/cli/autocomplete/zsh_setup && test -f $ASYNCAPI_AC_ZSH_SETUP_PATH && source $ASYNCAPI_AC_ZSH_SETUP_PATH; # asyncapi autocomplete setup
+# Docker Aliases
+# Docker aliases
+alias dpsa='docker ps -a'
+alias dim='docker images'
+alias dbuild='docker build'
+alias drun='docker run'
+alias dstop='docker stop'
+alias drm='docker rm'
+alias dri='docker rmi'
+alias dpull='docker pull'
+alias dexec='docker exec'
+alias dnetls='docker network ls'
+alias dcup='docker-compose up'
+alias dcdown='docker-compose down'
+alias dstat='docker stats'
+alias dlogs='docker logs'
 
+# Kotlin alias
+alias kt="kotlinc"
 
+alias nx='nocorrect nx'
+export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/riyaghosal/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+### alias rider="/Applications/Rider.app/Contents/MacOS/rider"
+alias rider="/Applications/Rider.app/Contents/MacOS/rider"
+export PATH="/opt/homebrew/opt/dotnet@6/bin:$PATH"
+alias gst='git status'
+alias gc='git commit'
+alias ga='git add'
+autoload -Uz compinit
+compinit
+# Enable menu completion for files and directories
+zstyle ':completion:*' menu select
 
-complete -o nospace -C /opt/homebrew/bin/terragrunt terragrunt
-export GPG_TTY=$(tty)
+# Enable case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+alias gp='git push'
+alias gpr='git pull --rebase'
+alias gco='git checkout'
+alias g='git'
